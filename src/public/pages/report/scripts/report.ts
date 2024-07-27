@@ -1,21 +1,21 @@
 const bestClassifications = [
-    "brilliant",
-    "great",
-    "best",
-    "book",
-    "forced"
+    "блестящий ход",
+    "точный ход",
+    "лучший ход",
+    "теоритический ход",
+    "форсированный ход"
 ];
 
 function updateClassificationMessage(lastPosition: Position, position: Position) {
 
     if (position.classification) {
         let classificationMessages: { [key: string]: string } = {
-            "great": "a great move",
-            "good":"an okay move",
-            "inaccuracy": "an inaccuracy",
-            "mistake": "a mistake",
-            "blunder": "a blunder",
-            "book": "theory"
+            "точный": "точный ход",
+            "хороший":"хороший ход",
+            "неточность": "неточность",
+            "ошибка": "ошибка",
+            "зевок": "зевок",
+            "теоритический ход": "теоритический (книжный) ход"
         };
 
         $("#classification-icon").attr("src", `/static/media/${position.classification}.png`);
