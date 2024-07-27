@@ -20,7 +20,7 @@ function getPlayersString(game: Game) {
     if (game.white.aiLevel) {
         return `AI level ${game.white.aiLevel} vs. ${game.black.username} (${game.black.rating})`;
     } else if (game.black.aiLevel) {
-        return `${game.white.username} (${game.white.rating}) vs. AI level ${game.black.aiLevel}`;
+        return `${game.white.username} (${game.white.rating}) vs. ИИ уровня ${game.black.aiLevel}`;
     } else {
         return `${game.white.username} (${game.white.rating}) vs. ${game.black.username} (${game.black.rating})`;
     }
@@ -62,7 +62,7 @@ async function fetchChessComGames(username: string) {
 
         let games: any[] = (await gamesResponse.json()).games;
 
-        $("#games-list").html(games.length == 0 ? "No games found." : "");
+        $("#games-list").html(games.length == 0 ? "Игр не найдено." : "");
 
         for (let game of games.reverse()) {
             let gameListing = generateGameListing({
@@ -81,7 +81,7 @@ async function fetchChessComGames(username: string) {
             $("#games-list").append(gameListing);
         }
     } catch {
-        $("#games-list").html("No games found.");
+        $("#games-list").html("Игр не найдено.");
     }
 
 }
@@ -118,7 +118,7 @@ async function fetchLichessGames(username: string) {
             .filter(game => game.length > 0)
             .map(game => JSON.parse(game));
 
-        $("#games-list").html(games.length == 0 ? "No games found." : "");
+        $("#games-list").html(games.length == 0 ? "Игр не найдено." : "");
 
         for (let game of games) {
             let gameListing = generateGameListing({
@@ -139,7 +139,7 @@ async function fetchLichessGames(username: string) {
             $("#games-list").append(gameListing);
         }
     } catch {
-        $("#games-list").html("No games found.");
+        $("#games-list").html("Игр не найдено.");
     }
 
 }
