@@ -27,11 +27,11 @@ let lastEvaluation = {
 };
 
 let whitePlayer: Profile = {
-    username: "White Player",
+    username: "Игрок за белых",
     rating: "?"
 };
 let blackPlayer: Profile = {
-    username: "Black Player",
+    username: "Игрок за чёрных",
     rating: "?"
 };
 
