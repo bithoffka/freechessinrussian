@@ -65,7 +65,7 @@ async function evaluate() {
 
         if (!parseResponse.ok) {
             return logAnalysisError(
-                parsedPGN.message ?? "Failed to parse PGN.",
+                parsedPGN.message ?? "Не получилось расшифровать PGN.",
             );
         }
 
@@ -85,7 +85,7 @@ async function evaluate() {
 
     updateBoardPlayers();
 
-    $("#secondary-message").html("It can take around a minute to process a full game.");
+    $("#secondary-message").html("Анализ всей игры может занять около минуты.");
 
     // Fetch cloud evaluations where possible
     for (let position of positions) {
@@ -160,7 +160,7 @@ async function evaluate() {
         let progress =
             ((positions.indexOf(position) + 1) / positions.length) * 100;
         $("#evaluation-progress-bar").attr("value", progress);
-        logAnalysisInfo(`Evaluating positions... (${progress.toFixed(1)}%)`);
+        logAnalysisInfo(`Оцениваем позиции... (${progress.toFixed(1)}%)`);
     }
 
     // Evaluate remaining positions
@@ -172,7 +172,7 @@ async function evaluate() {
         if (!positions.some((pos) => !pos.topLines)) {
             clearInterval(stockfishManager);
 
-            logAnalysisInfo("Evaluation complete.");
+            logAnalysisInfo("Оценка завершена.");
             $("#evaluation-progress-bar").val(100);
             $(".g-recaptcha").css("display", "inline");
             if(!document.hasFocus()){
@@ -180,7 +180,7 @@ async function evaluate() {
                 snd.play();
             }
             $("#secondary-message").html(
-                "Please complete the CAPTCHA to continue.",
+                "Пожалуйста пройдите Captcha чтобы продолжить.",
             );
 
             evaluatedPositions = positions;
@@ -216,7 +216,7 @@ async function evaluate() {
         let progress = (workerDepths / (positions.length * depth)) * 100;
 
         $("#evaluation-progress-bar").attr("value", progress);
-        logAnalysisInfo(`Evaluating positions... (${progress.toFixed(1)}%)`);
+        logAnalysisInfo(`Оцениваем позиции... (${progress.toFixed(1)}%)`);
     }, 10);
 }
 
